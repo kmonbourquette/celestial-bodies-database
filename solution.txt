@@ -1,0 +1,149 @@
+~~ STEP 1: CREATE & CONNECT DATABASE ~~
+---------------------------------------
+echo hello PostgreSQL
+psql --username=freecodecamp --dbname=universe
+CREATE DATABASE universe;
+\c universe;
+
+
+~~ STEP 2: CREATING TABLES MEETING REQUIREMENTS ~~
+--------------------------------------------------
+CREATE TABLE galaxy();
+ALTER TABLE galaxy ADD COLUMN galaxy_id SERIAL NOT NULL;
+ALTER TABLE galaxy ADD COLUMN star_id INT NOT NULL;
+ALTER TABLE galaxy ADD COLUMN name VARCHAR(30) UNIQUE NOT NULL;
+ALTER TABLE galaxy ADD COLUMN area INT;
+ALTER TABLE galaxy ADD COLUMN volume INT;
+ALTER TABLE galaxy ADD COLUMN age NUMERIC;
+ALTER TABLE galaxy ADD COLUMN material TEXT;
+ALTER TABLE galaxy ADD COLUMN has_life BOOLEAN;
+ALTER TABLE galaxy ADD COLUMN has_water BOOLEAN;
+
+CREATE TABLE star();
+ALTER TABLE star ADD COLUMN star_id SERIAL NOT NULL;
+ALTER TABLE star ADD COLUMN galaxy_id INT NOT NULL;
+ALTER TABLE star ADD COLUMN planet_id INT NOT NULL;
+ALTER TABLE star ADD COLUMN name VARCHAR(30) UNIQUE NOT NULL;
+ALTER TABLE star ADD COLUMN area INT;
+ALTER TABLE star ADD COLUMN volume INT;
+ALTER TABLE star ADD COLUMN age NUMERIC;
+ALTER TABLE star ADD COLUMN material TEXT;
+ALTER TABLE star ADD COLUMN has_life BOOLEAN;
+ALTER TABLE star ADD COLUMN has_water BOOLEAN;
+
+CREATE TABLE planet();
+ALTER TABLE planet ADD COLUMN planet_id SERIAL NOT NULL;
+ALTER TABLE planet ADD COLUMN star_id INT NOT NULL;
+ALTER TABLE planet ADD COLUMN moon_id INT NOT NULL;
+ALTER TABLE planet ADD COLUMN name VARCHAR(30) UNIQUE NOT NULL;
+ALTER TABLE planet ADD COLUMN area INT;
+ALTER TABLE planet ADD COLUMN volume INT;
+ALTER TABLE planet ADD COLUMN age NUMERIC;
+ALTER TABLE planet ADD COLUMN material TEXT;
+ALTER TABLE planet ADD COLUMN has_life BOOLEAN;
+ALTER TABLE planet ADD COLUMN has_water BOOLEAN;
+
+CREATE TABLE moon();
+ALTER TABLE moon ADD COLUMN moon_id SERIAL NOT NULL;
+ALTER TABLE moon ADD COLUMN planet_id INT NOT NULL;
+ALTER TABLE moon ADD COLUMN name VARCHAR(30) UNIQUE NOT NULL;
+ALTER TABLE moon ADD COLUMN area INT;
+ALTER TABLE moon ADD COLUMN volume INT;
+ALTER TABLE moon ADD COLUMN age NUMERIC;
+ALTER TABLE moon ADD COLUMN material TEXT;
+ALTER TABLE moon ADD COLUMN has_life BOOLEAN;
+ALTER TABLE moon ADD COLUMN has_water BOOLEAN;
+
+CREATE TABLE more_details();
+ALTER TABLE more_details ADD COLUMN more_details_id SERIAL NOT NULL;
+ALTER TABLE more_details ADD COLUMN object_id INT;
+ALTER TABLE more_details ADD COLUMN name VARCHAR(30) UNIQUE NOT NULL;
+ALTER TABLE more_details ADD COLUMN description TEXT;
+
+
+~~ STEP 3: ADDING DATA TO TABLES ~~
+-----------------------------------
+INSERT INTO galaxy VALUES
+(1, 1, 'galaxy1', 300, 999, 1000, 'solid', false, true),
+(2, 2, 'galaxy2', 300, 999, 1000, 'solid', false, true),
+(3, 3, 'galaxy3', 300, 999, 1000, 'solid', false, true),
+(4, 4, 'galaxy4', 300, 999, 1000, 'solid', false, true),
+(5, 5, 'galaxy5', 300, 999, 1000, 'solid', false, true),
+(6, 6, 'galaxy6', 300, 999, 1000, 'solid', false, true);
+
+INSERT INTO star VALUES
+(1, 1, 1, 'star1', 100, 600, 1300, 'solid', true, false),
+(2, 2, 2, 'star2', 100, 600, 1300, 'solid', true, false),
+(3, 3, 3, 'star3', 100, 600, 1300, 'solid', true, false),
+(4, 4, 4, 'star4', 100, 600, 1300, 'solid', true, false),
+(5, 5, 5, 'star5', 100, 600, 1300, 'solid', true, false),
+(6, 6, 6, 'star6', 100, 600, 1300, 'solid', true, false);
+
+INSERT INTO planet VALUES
+(1,  1,  1, 'planet1', 800, 1200, 2250, 'solid', true, true),
+(2,  2,  2, 'planet2', 800, 1200, 2250, 'solid', true, true),
+(3,  3,  3, 'planet3', 800, 1200, 2250, 'solid', true, true),
+(4,  4,  4, 'planet4', 800, 1200, 2250, 'solid', true, true),
+(5,  5,  5, 'planet5', 800, 1200, 2250, 'solid', true, true),
+(6,  6,  6, 'planet6', 800, 1200, 2250, 'solid', true, true),
+(7,  3,  7, 'planet7', 800, 1200, 2250, 'solid', true, true),
+(8,  3,  8, 'planet8', 800, 1200, 2250, 'solid', true, true),
+(9,  3,  9, 'planet9', 800, 1200, 2250, 'solid', true, true),
+(10, 3, 10, 'planet10', 800, 1200, 2250, 'solid', true, true),
+(11, 4, 11, 'planet11', 800, 1200, 2250, 'solid', true, true),
+(12, 5, 12, 'planet12', 800, 1200, 2250, 'solid', true, true);
+
+
+INSERT INTO moon VALUES 
+(1,   1, 'moon1', 500, 666, 1997, 'solid', true, true),
+(2,   2, 'moon2', 500, 666, 1997, 'solid', true, true),
+(3,   3, 'moon3', 500, 666, 1997, 'solid', true, true),
+(4,   4, 'moon4', 500, 666, 1997, 'solid', true, true),
+(5,   5, 'moon5', 500, 666, 1997, 'solid', true, true),
+(6,   6, 'moon6', 500, 666, 1997, 'solid', true, true),
+(7,   7, 'moon7', 500, 666, 1997, 'solid', true, true),
+(8,   8, 'moon8', 500, 666, 1997, 'solid', true, true),
+(9,   9, 'moon9', 500, 666, 1997, 'solid', true, true),
+(10, 10, 'moon10', 500, 666, 1997, 'solid', true, true),
+(11, 11, 'moon11', 500, 666, 1997, 'solid', true, true),
+(12, 11, 'moon12', 500, 666, 1997, 'solid', true, true),
+(13, 11, 'moon13', 500, 666, 1997, 'solid', true, true),
+(14, 11, 'moon14', 500, 666, 1997, 'solid', true, true),
+(15, 11, 'moon15', 500, 666, 1997, 'solid', true, true),
+(16, 11, 'moon16', 500, 666, 1997, 'solid', true, true),
+(17, 11, 'moon17', 500, 666, 1997, 'solid', true, true),
+(18, 11, 'moon18', 500, 666, 1997, 'solid', true, true),
+(19, 11, 'moon19', 500, 666, 1997, 'solid', true, true),
+(20, 11, 'moon20', 500, 666, 1997, 'solid', true, true);
+
+INSERT INTO more_details VALUES
+(1, 1, 'details1', 'description'),
+(2, 2, 'details2', 'description'),
+(3, 3, 'details3', 'description'),
+(4, 4, 'details4', 'description'),
+(5, 5, 'details5', 'description');
+
+
+~~ STEP 4: ADD PRIMARY AND FOREIGN KEYS ~~
+------------------------------------------
+ALTER TABLE galaxy ADD PRIMARY KEY(galaxy_id);
+ALTER TABLE star ADD PRIMARY KEY(star_id);
+ALTER TABLE planet ADD PRIMARY KEY(planet_id);
+ALTER TABLE moon ADD PRIMARY KEY(moon_id);
+ALTER TABLE more_details ADD PRIMARY KEY(more_details_id);
+
+ALTER TABLE galaxy ADD FOREIGN KEY(star_id) REFERENCES star(star_id);
+ALTER TABLE star ADD FOREIGN KEY(galaxy_id) REFERENCES galaxy(galaxy_id);
+ALTER TABLE star ADD FOREIGN KEY(planet_id) REFERENCES planet(planet_id);
+ALTER TABLE planet ADD FOREIGN KEY(star_id) REFERENCES star(star_id);
+ALTER TABLE planet ADD FOREIGN KEY(moon_id) REFERENCES moon(moon_id);
+ALTER TABLE moon ADD FOREIGN KEY(planet_id) REFERENCES planet(planet_id);
+
+
+~~ STEP 5: CREATE UNIVERSE.SQL FILE ~~
+--------------------------------------
+Menu > Terminal > New Terminal
+
+pg_dump -cC --inserts -U freecodecamp universe > universe.sql
+
+Download universe.sql file and upload to a public repository of your choosing. Provide link in FCC project.
